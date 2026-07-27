@@ -14,7 +14,125 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      meal_items: {
+        Row: {
+          calories: number
+          carbs_g: number | null
+          confidence: number | null
+          created_at: string
+          fat_g: number | null
+          id: string
+          meal_id: string
+          name: string
+          protein_g: number | null
+          quantity: string | null
+          user_id: string
+        }
+        Insert: {
+          calories?: number
+          carbs_g?: number | null
+          confidence?: number | null
+          created_at?: string
+          fat_g?: number | null
+          id?: string
+          meal_id: string
+          name: string
+          protein_g?: number | null
+          quantity?: string | null
+          user_id: string
+        }
+        Update: {
+          calories?: number
+          carbs_g?: number | null
+          confidence?: number | null
+          created_at?: string
+          fat_g?: number | null
+          id?: string
+          meal_id?: string
+          name?: string
+          protein_g?: number | null
+          quantity?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meal_items_meal_id_fkey"
+            columns: ["meal_id"]
+            isOneToOne: false
+            referencedRelation: "meals"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      meals: {
+        Row: {
+          created_at: string
+          eaten_at: string
+          id: string
+          image_path: string | null
+          meal_type: string
+          notes: string | null
+          total_calories: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          eaten_at?: string
+          id?: string
+          image_path?: string | null
+          meal_type?: string
+          notes?: string | null
+          total_calories?: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          eaten_at?: string
+          id?: string
+          image_path?: string | null
+          meal_type?: string
+          notes?: string | null
+          total_calories?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          age: number | null
+          created_at: string
+          daily_calorie_goal: number
+          gender: string | null
+          height_cm: number | null
+          id: string
+          name: string
+          updated_at: string
+          weight_kg: number | null
+        }
+        Insert: {
+          age?: number | null
+          created_at?: string
+          daily_calorie_goal?: number
+          gender?: string | null
+          height_cm?: number | null
+          id: string
+          name?: string
+          updated_at?: string
+          weight_kg?: number | null
+        }
+        Update: {
+          age?: number | null
+          created_at?: string
+          daily_calorie_goal?: number
+          gender?: string | null
+          height_cm?: number | null
+          id?: string
+          name?: string
+          updated_at?: string
+          weight_kg?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
